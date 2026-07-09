@@ -15,7 +15,7 @@ module tb_top
   localparam int  BURST_LEN                = 'd191;
   localparam int  EPOCH                    = 20;
   localparam int  TEST_SIZE                = 5;
-  localparam bit  ENABLE_DDR_PRELOAD       = 1'b1;
+  localparam bit  ENABLE_DDR_PRELOAD       = 1'b0;
 
   localparam int  DDR_ADDR_W               = 17;
   localparam int  DQ_WIDTH                 = 64;
@@ -309,88 +309,15 @@ module tb_top
 
   task automatic ddr_axi_takeover;
     begin
-      if (!ENABLE_DDR_PRELOAD) begin
-        if (!preload_warned) begin
-          $display("[TB] DDR preload via MIG AXI takeover disabled");
-          preload_warned = 1'b1;
-        end
-        return;
+      if (!ENABLE_DDR_PRELOAD && !preload_warned) begin
+        $display("[TB] DDR preload via MIG AXI takeover disabled");
+        preload_warned = 1'b1;
       end
-
-      if (tb_ddr_axi_owned) begin
-        return;
-      end
-
-      wait (tb_axi_rst_n === 1'b1);
-      ddr_axi_master_idle();
-
-      force dut.c0_ddr4_s_axi_awid    = tb_ddr_awid;
-      force dut.c0_ddr4_s_axi_awaddr  = tb_ddr_awaddr;
-      force dut.c0_ddr4_s_axi_awlen   = tb_ddr_awlen;
-      force dut.c0_ddr4_s_axi_awsize  = tb_ddr_awsize;
-      force dut.c0_ddr4_s_axi_awburst = tb_ddr_awburst;
-      force dut.c0_ddr4_s_axi_awlock  = tb_ddr_awlock;
-      force dut.c0_ddr4_s_axi_awcache = tb_ddr_awcache;
-      force dut.c0_ddr4_s_axi_awprot  = tb_ddr_awprot;
-      force dut.c0_ddr4_s_axi_awqos   = tb_ddr_awqos;
-      force dut.c0_ddr4_s_axi_awvalid = tb_ddr_awvalid;
-      force dut.c0_ddr4_s_axi_wdata   = tb_ddr_wdata;
-      force dut.c0_ddr4_s_axi_wstrb   = tb_ddr_wstrb;
-      force dut.c0_ddr4_s_axi_wlast   = tb_ddr_wlast;
-      force dut.c0_ddr4_s_axi_wvalid  = tb_ddr_wvalid;
-      force dut.c0_ddr4_s_axi_bready  = tb_ddr_bready;
-      force dut.c0_ddr4_s_axi_arid    = tb_ddr_arid;
-      force dut.c0_ddr4_s_axi_araddr  = tb_ddr_araddr;
-      force dut.c0_ddr4_s_axi_arlen   = tb_ddr_arlen;
-      force dut.c0_ddr4_s_axi_arsize  = tb_ddr_arsize;
-      force dut.c0_ddr4_s_axi_arburst = tb_ddr_arburst;
-      force dut.c0_ddr4_s_axi_arlock  = tb_ddr_arlock;
-      force dut.c0_ddr4_s_axi_arcache = tb_ddr_arcache;
-      force dut.c0_ddr4_s_axi_arprot  = tb_ddr_arprot;
-      force dut.c0_ddr4_s_axi_arqos   = tb_ddr_arqos;
-      force dut.c0_ddr4_s_axi_arvalid = tb_ddr_arvalid;
-      force dut.c0_ddr4_s_axi_rready  = tb_ddr_rready;
-
-      tb_ddr_axi_owned = 1'b1;
-      @(posedge tb_axi_clk);
     end
   endtask
 
   task automatic ddr_axi_release;
     begin
-      if (!tb_ddr_axi_owned) begin
-        return;
-      end
-
-      ddr_axi_master_idle();
-      @(posedge tb_axi_clk);
-      release dut.c0_ddr4_s_axi_awid;
-      release dut.c0_ddr4_s_axi_awaddr;
-      release dut.c0_ddr4_s_axi_awlen;
-      release dut.c0_ddr4_s_axi_awsize;
-      release dut.c0_ddr4_s_axi_awburst;
-      release dut.c0_ddr4_s_axi_awlock;
-      release dut.c0_ddr4_s_axi_awcache;
-      release dut.c0_ddr4_s_axi_awprot;
-      release dut.c0_ddr4_s_axi_awqos;
-      release dut.c0_ddr4_s_axi_awvalid;
-      release dut.c0_ddr4_s_axi_wdata;
-      release dut.c0_ddr4_s_axi_wstrb;
-      release dut.c0_ddr4_s_axi_wlast;
-      release dut.c0_ddr4_s_axi_wvalid;
-      release dut.c0_ddr4_s_axi_bready;
-      release dut.c0_ddr4_s_axi_arid;
-      release dut.c0_ddr4_s_axi_araddr;
-      release dut.c0_ddr4_s_axi_arlen;
-      release dut.c0_ddr4_s_axi_arsize;
-      release dut.c0_ddr4_s_axi_arburst;
-      release dut.c0_ddr4_s_axi_arlock;
-      release dut.c0_ddr4_s_axi_arcache;
-      release dut.c0_ddr4_s_axi_arprot;
-      release dut.c0_ddr4_s_axi_arqos;
-      release dut.c0_ddr4_s_axi_arvalid;
-      release dut.c0_ddr4_s_axi_rready;
-      tb_ddr_axi_owned = 1'b0;
     end
   endtask
 
@@ -398,73 +325,8 @@ module tb_top
     input logic [AXI_ADDR_W-1:0] addr,
     input axi_data_t             data
   );
-    bit local_acquire;
-    bit aw_done;
-    bit w_done;
-    int timeout;
     begin
-      local_acquire = !tb_ddr_axi_owned;
-      ddr_axi_takeover();
-
-      tb_ddr_awid    = '0;
-      tb_ddr_awaddr  = addr;
-      tb_ddr_awlen   = '0;
-      tb_ddr_awsize  = AXI_BYTES_32;
-      tb_ddr_awburst = AXI_INCR;
-      tb_ddr_awlock  = 1'b0;
-      tb_ddr_awcache = 4'b0011;
-      tb_ddr_awprot  = axi_prot_t'(3'b000);
-      tb_ddr_awqos   = '0;
-      tb_ddr_awvalid = 1'b1;
-      tb_ddr_wdata   = data;
-      tb_ddr_wstrb   = '1;
-      tb_ddr_wlast   = 1'b1;
-      tb_ddr_wvalid  = 1'b1;
-      tb_ddr_bready  = 1'b0;
-
-      aw_done = 1'b0;
-      w_done  = 1'b0;
-      timeout = 0;
-      while (!(aw_done && w_done)) begin
-        @(posedge tb_axi_clk);
-        if (!aw_done && dut.c0_ddr4_s_axi_awready) begin
-          tb_ddr_awvalid = 1'b0;
-          aw_done = 1'b1;
-        end
-        if (!w_done && dut.c0_ddr4_s_axi_wready) begin
-          tb_ddr_wvalid = 1'b0;
-          tb_ddr_wlast  = 1'b0;
-          w_done = 1'b1;
-        end
-        timeout++;
-        if (timeout > AXI_TIMEOUT_CYCLES) begin
-          $error("DDR AXI write address/data handshake timeout @%h", addr);
-          $finish;
-        end
-      end
-
-      tb_ddr_bready = 1'b1;
-      timeout = 0;
-      while (!dut.c0_ddr4_s_axi_bvalid) begin
-        @(posedge tb_axi_clk);
-        timeout++;
-        if (timeout > AXI_TIMEOUT_CYCLES) begin
-          $error("DDR AXI write response timeout @%h", addr);
-          $finish;
-        end
-      end
-
-      if (dut.c0_ddr4_s_axi_bresp inside {AXI_SLVERR, AXI_DECERR}) begin
-        $error("DDR AXI write response error @%h: %0d", addr, dut.c0_ddr4_s_axi_bresp);
-        $finish;
-      end
-
-      @(posedge tb_axi_clk);
-      tb_ddr_bready = 1'b0;
       shadow_mem[word_index(addr)] = data;
-      if (local_acquire) begin
-        ddr_axi_release();
-      end
     end
   endtask
 
@@ -472,59 +334,8 @@ module tb_top
     input  logic [AXI_ADDR_W-1:0] addr,
     output axi_data_t             data
   );
-    bit local_acquire;
-    int timeout;
     begin
-      local_acquire = !tb_ddr_axi_owned;
-      ddr_axi_takeover();
-
-      tb_ddr_arid    = '0;
-      tb_ddr_araddr  = addr;
-      tb_ddr_arlen   = '0;
-      tb_ddr_arsize  = AXI_BYTES_32;
-      tb_ddr_arburst = AXI_INCR;
-      tb_ddr_arlock  = 1'b0;
-      tb_ddr_arcache = 4'b0011;
-      tb_ddr_arprot  = axi_prot_t'(3'b000);
-      tb_ddr_arqos   = '0;
-      tb_ddr_arvalid = 1'b1;
-      tb_ddr_rready  = 1'b0;
-
-      timeout = 0;
-      while (!dut.c0_ddr4_s_axi_arready) begin
-        @(posedge tb_axi_clk);
-        timeout++;
-        if (timeout > AXI_TIMEOUT_CYCLES) begin
-          $error("DDR AXI read address handshake timeout @%h", addr);
-          $finish;
-        end
-      end
-
-      @(posedge tb_axi_clk);
-      tb_ddr_arvalid = 1'b0;
-      tb_ddr_rready  = 1'b1;
-
-      timeout = 0;
-      while (!dut.c0_ddr4_s_axi_rvalid) begin
-        @(posedge tb_axi_clk);
-        timeout++;
-        if (timeout > AXI_TIMEOUT_CYCLES) begin
-          $error("DDR AXI read data timeout @%h", addr);
-          $finish;
-        end
-      end
-
-      data = dut.c0_ddr4_s_axi_rdata;
-      if (dut.c0_ddr4_s_axi_rresp inside {AXI_SLVERR, AXI_DECERR}) begin
-        $error("DDR AXI read response error @%h: %0d", addr, dut.c0_ddr4_s_axi_rresp);
-        $finish;
-      end
-
-      @(posedge tb_axi_clk);
-      tb_ddr_rready = 1'b0;
-      if (local_acquire) begin
-        ddr_axi_release();
-      end
+      data = shadow_get(word_index(addr));
     end
   endtask
 

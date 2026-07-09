@@ -28,6 +28,8 @@ logic         c0_ddr4_ui_clk_sync_rst;
 logic         c0_init_calib_complete;
 
 logic         sys_clk;
+logic         sys_clk_ref_raw;
+logic         sys_clk_ref;
 logic         ddr_sys_rst;
 logic         sys_resetn;
 logic         sys_resetn_async;
@@ -35,6 +37,17 @@ logic         sys_resetn_async;
 
 logic         dbg_clk;
 logic [511:0] dbg_bus;
+
+IBUFDS u_sys_clk_ibufds (
+  .I (clk_p),
+  .IB(clk_n),
+  .O (sys_clk_ref_raw)
+);
+
+BUFG u_sys_clk_bufg (
+  .I(sys_clk_ref_raw),
+  .O(sys_clk_ref)
+);
 
 clock clock
    (
@@ -44,8 +57,7 @@ clock clock
     .resetn(rst_n), // input reset
     .locked(pll_locked),       // output locked
    // Clock in ports
-    .clk_in1_p(clk_p),    // input clk_in1_p
-  .clk_in1_n(clk_n)    // input clk_in1_n
+    .clk_in1(sys_clk_ref)    // input clk_in1
 );
 
 assign ddr_sys_rst     = ~rst_n | ~pll_locked;
@@ -247,7 +259,7 @@ ddr_clock_converter u_ddr_clock_converter (
 ddr4_controller u_ddr4_controller (
   .c0_init_calib_complete(c0_init_calib_complete),
   .dbg_clk                (dbg_clk),
-  .c0_sys_clk_i           (sys_clk),
+  .c0_sys_clk_i           (sys_clk_ref_raw),
   .dbg_bus                (dbg_bus),
   .c0_ddr4_adr            (c0_ddr4_adr),
   .c0_ddr4_ba             (c0_ddr4_ba),
