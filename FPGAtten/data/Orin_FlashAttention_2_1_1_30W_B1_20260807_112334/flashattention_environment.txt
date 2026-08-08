@@ -1,0 +1,9 @@
+torch=2.1.0a0+41361538.nv23.06
+torch_cuda=11.4
+gpu=Orin
+capability=(8, 7)
+flash_attn=2.1.1
+extension=/home/user/tools/flash-attention-2.1.1/flash_attn_2_cuda.cpython-38-aarch64-linux-gnu.so
+smoke_shape=(1, 1, 32, 128)
+smoke_dtype=torch.bfloat16
+smoke_nonfinite=0

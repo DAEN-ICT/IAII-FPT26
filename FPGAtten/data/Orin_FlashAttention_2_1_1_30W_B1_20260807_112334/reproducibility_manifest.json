@@ -1,0 +1,71 @@
+{
+  "run_id": "orin_flashattention_30w_b1_20260807_112334",
+  "completed_at": "2026-08-07T11:25:09+08:00",
+  "result_status": "passed",
+  "host": {
+    "hostname": "cjiang",
+    "os": "JetPack R35.4.1 / Linux 5.10.120-tegra",
+    "hardware": "NVIDIA Jetson AGX Orin Developer Kit",
+    "gpu_reported_name": "Orin",
+    "compute_capability": "8.7",
+    "gpu_memory_bytes": 65852895232
+  },
+  "software": {
+    "python": "3.8.20",
+    "python_executable": "/home/user/anaconda3/envs/py38/bin/python",
+    "pytorch": "2.1.0a0+41361538.nv23.06",
+    "cuda": "11.4",
+    "cudnn": 8600,
+    "flashattention": "2.1.1",
+    "flashattention_package_location": "/home/user/anaconda3/envs/py38/lib/python3.8/site-packages/flash_attn-2.1.1-py3.8-linux-aarch64.egg",
+    "flashattention_extension": "/home/user/tools/flash-attention-2.1.1/flash_attn_2_cuda.cpython-38-aarch64-linux-gnu.so",
+    "flashattention_extension_sha256": "57705f33ddd1e9dcf0f22a312c73933247df1f8b7bb6e71954225aa5a10bcf30",
+    "flashattention_source_git": "not available: /home/user/tools/flash-attention-2.1.1 is not a Git worktree",
+    "compiler": "gcc 9.4.0",
+    "cuda_compiler_query": "nvcc was not on PATH during post-run provenance capture; runtime CUDA is 11.4"
+  },
+  "measurement_contract": {
+    "batch": 1,
+    "modes": ["decode", "prefill"],
+    "backend": "flash_attn_2",
+    "input_dtype": "bfloat16",
+    "output_dtype": "float32",
+    "gqa": "32 query heads / 8 KV heads / head dimension 128",
+    "timing_scope": "device_resident_attention_only",
+    "cache_mode": "streaming",
+    "streaming_target_bytes": 67108864,
+    "streaming_note": "the input pool uses at least two slots; stream_working_set_bytes in attention.csv is the authoritative actual allocation for each case",
+    "input_source": "synthetic torch.randn with seed=20260730; Llama3-8B GQA shape/semantic benchmark, not real Llama3 Q/K/V replay",
+    "output_cast_timing": "the BF16 FlashAttention output is converted to FP32 inside the CUDA event timing window",
+    "power_mode": "nvpmodel MODE_30W (ID 2) + jetson_clocks during timing",
+    "clock_restore": "runner restores the pre-test jetson_clocks state on exit",
+    "decode_context_count": 30,
+    "prefill_context_count": 21,
+    "total_cases": 51,
+    "precision_violations": 0,
+    "nan_or_inf": 0
+  },
+  "source_code": {
+    "benchmark_attention.py": "323e438c50400cdc4d5204fb287b2e5cbdbdd97d54ea23bf4b2bd45eb1c070c1",
+    "run_orin_flashattention_b1_30w.sh": "1fbcc68517468270796bdd85a6f37e902b75e77ed4c0d2f62a7b0936fbae3471",
+    "validate_orin_flashattention_b1_result.py": "37b204d227f9e1ee6817032bdf59158b7c9bddbdf66364383f2917702a49d64f"
+  },
+  "selected_results_token_s": {
+    "decode_context_8192": 351.45134528069576,
+    "prefill_context_8192": 92201.88308806659
+  },
+  "primary_artifacts": [
+    "attention.csv",
+    "attention_metadata.json",
+    "flashattention_environment.txt",
+    "flashattention_provenance.txt",
+    "flashattention_extension.sha256",
+    "conda_py38_explicit.txt",
+    "system.txt",
+    "nvpmodel_30w_locked.txt",
+    "jetson_clocks_locked.txt",
+    "benchmark_sha256.txt",
+    "reproducibility_code/",
+    "REPRODUCE.md"
+  ]
+}

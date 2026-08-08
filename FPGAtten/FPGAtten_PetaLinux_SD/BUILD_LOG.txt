@@ -1,0 +1,90 @@
+FPGATTEN_BUILD_BEGIN=20260807T134837Z
+PROJECT_DIR=/home/LUO/fpgatten_build/FPGAtten_Z19P
+*************************************************************************************************************************************************
+The PetaLinux source code and images provided/generated are for demonstration purposes only.
+Please refer to https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/2741928025/Moving+from+PetaLinux+to+Production+Deployment
+ for more details
+*************************************************************************************************************************************************
+PetaLinux environment set to '/home/LUO/petalinux/2024.2'
+[WARNING] This is not a supported OS
+[INFO] Checking free disk space
+[INFO] Checking installed tools
+[INFO] Checking installed development libraries
+[INFO] Checking network and other services
+[WARNING] No tftp server found - please refer to "UG1144 2024.2 PetaLinux Tools Documentation Reference Guide" for its impact and solution
+[INFO] Building project
+[INFO] Bitbake is not available, some functionality may be reduced.
+[INFO] Using HW file: /home/LUO/fpgatten_build/FPGAtten_Z19P/project-spec/hw-description/system.xsa
+[INFO] Getting Platform info from HW file
+[INFO] Silentconfig project
+[INFO] Silentconfig rootfs
+[INFO] Generating configuration files
+[INFO] Generating workspace directory
+NOTE: Starting bitbake server...
+NOTE: Started PRServer with DBfile: /home/LUO/fpgatten_build/FPGAtten_Z19P/build/cache/prserv.sqlite3, Address: 127.0.0.1:41571, PID: 4476
+INFO: Specified workspace already set up, leaving as-is
+[INFO] bitbake petalinux-image-minimal
+NOTE: Started PRServer with DBfile: /home/LUO/fpgatten_build/FPGAtten_Z19P/build/cache/prserv.sqlite3, Address: 127.0.0.1:37573, PID: 4536
+WARNING: XSCT has been deprecated. It will still be available for several releases. In the future, it's recommended to start new projects with SDT workflow.
+Loading cache...done.
+Loaded 8454 entries from dependency cache.
+Parsing recipes...done.
+Parsing of 5802 .bb files complete (5800 cached, 2 parsed). 8456 targets, 994 skipped, 27 masked, 0 errors.
+NOTE: Resolving any missing task queue dependencies
+Initialising tasks...Checking sstate mirror object availability...done.
+Sstate summary: Wanted 509 Local 19 Mirrors 488 Missed 2 Current 2352 (99% match, 99% complete)
+NOTE: Executing Tasks
+NOTE: Running task 6304 of 6307 (/home/LUO/fpgatten_build/FPGAtten_Z19P/components/yocto/layers/meta-petalinux/recipes-core/images/petalinux-image-minimal.bb:do_populate_lic_deploy)
+NOTE: recipe petalinux-image-minimal-1.0-r0: task do_populate_lic_deploy: Started
+NOTE: recipe petalinux-image-minimal-1.0-r0: task do_populate_lic_deploy: Succeeded
+NOTE: Running task 6305 of 6307 (/home/LUO/fpgatten_build/FPGAtten_Z19P/components/yocto/layers/meta-petalinux/recipes-core/images/petalinux-image-minimal.bb:do_rm_work)
+NOTE: recipe petalinux-image-minimal-1.0-r0: task do_rm_work: Started
+NOTE: recipe petalinux-image-minimal-1.0-r0: task do_rm_work: Succeeded
+NOTE: Running noexec task 6306 of 6307 (/home/LUO/fpgatten_build/FPGAtten_Z19P/components/yocto/layers/meta-petalinux/recipes-core/images/petalinux-image-minimal.bb:do_rm_work_all)
+NOTE: Running noexec task 6307 of 6307 (/home/LUO/fpgatten_build/FPGAtten_Z19P/components/yocto/layers/meta-petalinux/recipes-core/images/petalinux-image-minimal.bb:do_build)
+NOTE: Tasks Summary: Attempted 6307 tasks of which 6303 didn't need to be rerun and all succeeded.
+
+Summary: There was 1 WARNING message.
+[INFO] Failed to copy built images to tftp dir: /tftpboot
+[INFO] Successfully built project
+[INFO] File in BOOT BIN: "/home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux/zynqmp_fsbl.elf"
+[INFO] File in BOOT BIN: "/home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux/pmufw.elf"
+[INFO] File in BOOT BIN: "/home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux/system.bit"
+[INFO] File in BOOT BIN: "/home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux/bl31.elf"
+[INFO] File in BOOT BIN: "/home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux/system.dtb"
+[INFO] File in BOOT BIN: "/home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux/u-boot.elf"
+[INFO] Generating zynqmp binary package BOOT.BIN...
+[INFO] 
+
+****** Bootgen v2024.2
+  **** Build date : Oct 21 2024-10:58:34
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+[INFO]   : Bootimage generated successfully
+
+
+[INFO] Binary is ready.
+[INFO] Successfully Generated BIN File
+[WARNING] Unable to access the TFTPBOOT folder /tftpboot!!!
+[WARNING] Skip file copy to TFTPBOOT folder!!!
+[INFO] Sourcing build environment
+[INFO] Extracting rootfs, This may take time!
+[INFO] Creating wic image
+[INFO] wic create /home/LUO/fpgatten_build/FPGAtten_Z19P/project-spec/meta-user/wic/rootfs.wks --rootfs-dir /home/LUO/fpgatten_build/FPGAtten_Z19P/build/wic/rootfs --bootimg-dir /home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux --kernel-dir /home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux --outdir  /home/LUO/fpgatten_build/FPGAtten_Z19P/build/wic/wic-tmp -n /home/LUO/fpgatten_build/FPGAtten_Z19P/build/tmp/work/cortexa72-cortexa53-xilinx-linux/wic-tools/1.0/recipe-sysroot-native 
+INFO: Creating image(s)...
+
+INFO: The new image(s) can be found here:
+  /home/LUO/fpgatten_build/FPGAtten_Z19P/build/wic/wic-tmp/rootfs-202608071351-mmcblk.direct
+
+The following build artifacts were used to create the image(s):
+  ROOTFS_DIR:                   /home/LUO/fpgatten_build/FPGAtten_Z19P/build/wic/rootfs
+  BOOTIMG_DIR:                  /home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux
+  KERNEL_DIR:                   /home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux
+  NATIVE_SYSROOT:               /home/LUO/fpgatten_build/FPGAtten_Z19P/build/tmp/work/cortexa72-cortexa53-xilinx-linux/wic-tools/1.0/recipe-sysroot-native
+
+INFO: The image(s) were created using OE kickstart file:
+  /home/LUO/fpgatten_build/FPGAtten_Z19P/project-spec/meta-user/wic/rootfs.wks
+[INFO] Successfully Generated image: /home/LUO/fpgatten_build/FPGAtten_Z19P/images/linux/petalinux-sdimage.wic
+xz: Reduced the number of threads from 28 to 24 to not exceed the memory usage limit of 3,964 MiB

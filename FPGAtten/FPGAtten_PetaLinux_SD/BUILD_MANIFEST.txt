@@ -1,0 +1,15 @@
+Product: FPGAtten
+Board: Z19-P (Zynq UltraScale+ MPSoC)
+PetaLinux: 2024.2
+Build UTC: 20260807T134837Z
+Login user: FPGAteen
+Root filesystem: SD /dev/mmcblk1p2, EXT4, read-write
+Core clock: 235000000 Hz
+DMA clock: 300000000 Hz
+XSA SHA-256: ec93c372b368b92949e9fe99df502f18f604c38153726759c20179753d89a655
+XSA embedded bitstream SHA-256: 243ac8c0ec7ca12b4ee9bb4d6f63e7984ae760816c8b70697c7095725d8643dc
+Standalone verified bitstream SHA-256: 5ec632e213613c23c6ed2a7fcb90989d0799ee77e7427710dfe6757306d08f81
+Bitstream configuration payload SHA-256: 7cd5bb79708e124aac6993cde53ea1c199fdc19854b5ab692015e08c9b5d45b4
+Bitstream configuration payload identical: yes
+Source project: /home/LUO/fpgatten_build/FPGAtten_Z19P
+Build log: BUILD_LOG.txt

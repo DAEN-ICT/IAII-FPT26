@@ -1,0 +1,13 @@
+-f rtl/filelist/common.f
+-f rtl/filelist/buffer.f
+-f rtl/filelist/dma.f
+-f rtl/filelist/frontend.f
+-f rtl/filelist/control.f
+-f rtl/filelist/qk_engine.f
+-f rtl/filelist/pv_engine.f
+-f rtl/filelist/online_softmax.f
+-f rtl/filelist/output_update.f
+-f rtl/filelist/axi.f
+-f rtl/filelist/top.f
+rtl/Top/gqav5_vivado_ip_top.v
+-f rtl/filelist/GQAv7_compute.f

@@ -1,0 +1,5 @@
+rtl/OnlineSoftmax/gqav5_exp2_neg_lut_lane.sv
+rtl/OnlineSoftmax/gqav5_exp2_neg_lut_bank.sv
+rtl/OnlineSoftmax/gqav5_softmax_state_store.sv
+rtl/OnlineSoftmax/gqav5_online_softmax_16lane.sv
+rtl/OnlineSoftmax/gqav5_fp32_recip_lut_nr.sv

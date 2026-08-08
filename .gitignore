@@ -1,1 +1,34 @@
-vivado/
+# Vivado generated state
+**/.Xil/
+**/*.cache/
+**/*.runs/
+**/*.gen/
+**/*.hw/
+**/*.ip_user_files/
+**/*.jou
+**/*.log
+
+# Large reproducible Vivado archive
+FPGAtten/2025.2/release/FPGAtten_2025_2_project_with_runs.zip
+FPGAtten/2025.2/release/remote_logs/
+
+# PetaLinux build/archive and deployable images
+FPGAtten/petalinux/archive/
+FPGAtten/FPGAtten_PetaLinux_SD/*.wic
+FPGAtten/FPGAtten_PetaLinux_SD/*.wic.xz
+FPGAtten/FPGAtten_PetaLinux_SD/*.ext4
+FPGAtten/FPGAtten_PetaLinux_SD/*.tar.gz
+FPGAtten/FPGAtten_PetaLinux_SD/BOOT.BIN
+FPGAtten/FPGAtten_PetaLinux_SD/Image
+
+# JTAG runtime generated payloads and vendored Python packages
+FPGAtten/jtag_runtime/images/
+FPGAtten/jtag_runtime/python_packages/
+FPGAtten/jtag_runtime/logs/
+FPGAtten/jtag_runtime/rootfs_file_list.txt
+
+# Local temporary files
+__pycache__/
+*.pyc
+tmp/
+

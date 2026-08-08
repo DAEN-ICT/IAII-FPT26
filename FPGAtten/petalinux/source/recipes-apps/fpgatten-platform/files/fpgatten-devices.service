@@ -1,0 +1,12 @@
+[Unit]
+Description=FPGAtten UIO device permissions and stable links
+After=systemd-udev-settle.service
+Before=getty@ttyPS0.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/fpgatten-device-setup
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

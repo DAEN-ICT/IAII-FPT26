@@ -1,0 +1,61 @@
+#!/bin/bash
+set -euo pipefail
+
+usage() {
+    echo "Usage: fpgatten-run decode|prefill CONTEXT LAYER [REPEATS]" >&2
+    exit 2
+}
+
+[ "$#" -ge 3 ] && [ "$#" -le 4 ] || usage
+mode="$1"
+context="$2"
+layer_raw="$3"
+repeats="${4:-3}"
+
+case "$mode" in
+    decode|prefill) ;;
+    *) usage ;;
+esac
+[[ "$context" =~ ^[0-9]+$ ]] || usage
+[[ "$layer_raw" =~ ^[0-9]+$ ]] || usage
+[[ "$repeats" =~ ^[0-9]+$ ]] || usage
+[ "$context" -ge 1 ] && [ "$context" -le 8192 ] || usage
+[ "$layer_raw" -ge 0 ] && [ "$layer_raw" -le 31 ] || usage
+[ "$repeats" -ge 1 ] && [ "$repeats" -le 1000 ] || usage
+
+layer=$(printf '%02d' "$layer_raw")
+case_dir="/opt/fpgatten/cases/$mode/context_${context}/layer_${layer}"
+[ -d "$case_dir" ] || {
+    echo "FPGATTEN_CASE_NOT_FOUND=$case_dir" >&2
+    exit 1
+}
+
+for device in /dev/fpgatten-attention /dev/fpgatten-memory; do
+    [ -c "$device" ] || {
+        echo "FPGATTEN_DEVICE_MISSING=$device" >&2
+        exit 1
+    }
+done
+
+cd "$case_dir"
+sha256sum -c SHA256SUMS
+
+result_dir="${HOME}/results"
+mkdir -p "$result_dir"
+timestamp=$(date -u +%Y%m%dT%H%M%SZ)
+log="$result_dir/${mode}_context_${context}_layer_${layer}_${timestamp}.log"
+
+echo "FPGATTEN_RUN_BEGIN mode=$mode context=$context layer=$layer repeats=$repeats"
+/usr/bin/fpgatten-replay \
+    --mode "$mode" \
+    --context "$context" \
+    --input-dir "$case_dir" \
+    --clock-hz 235000000 \
+    --repeats "$repeats" \
+    --timeout-ms 300000 \
+    /dev/fpgatten-attention /dev/fpgatten-memory 2>&1 | tee "$log"
+status=${PIPESTATUS[0]}
+[ "$status" -eq 0 ] || exit "$status"
+
+grep '^FPGATTEN_LLAMA3_REPLAY_RESULT' "$log"
+echo "FPGATTEN_RUN_PASS log=$log"

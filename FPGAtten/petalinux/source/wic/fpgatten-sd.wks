@@ -1,0 +1,4 @@
+# FPGAtten Z19-P SD image: FAT32 boot partition plus persistent EXT4 rootfs.
+part /boot --source bootimg-partition --ondisk mmcblk --fixed-size=512M --fstype=vfat --label BOOT --active --align 4
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --label RootFS --align 4
+bootloader --ptable msdos

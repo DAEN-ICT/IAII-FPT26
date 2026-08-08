@@ -1,0 +1,4 @@
+rtl/PVEngine/gqav5_pv_p_stationary_16x16.sv
+rtl/PVEngine/gqav5_pv_partitioned_p_stationary_16x16.sv
+rtl/PVEngine/gqav5_v_row_pingpong.sv
+rtl/PVEngine/gqav5_partitioned_v_row_pingpong.sv

@@ -1,0 +1,2 @@
+rtl/OutputUpdate/gqav5_output_update_16lane.sv
+rtl/OutputUpdate/gqav5_output_normalize_16lane.sv

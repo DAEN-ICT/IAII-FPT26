@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+
+cat /etc/fpgatten-release
+printf 'HOSTNAME=%s\n' "$(hostname)"
+printf 'USER=%s\n' "$(id -un)"
+awk '$2 == "/" { printf "ROOTFS=%s %s %s\n", $1, $3, $4 }' /proc/mounts
+
+for device in /dev/fpgatten-attention /dev/fpgatten-memory; do
+    if [ -c "$device" ]; then
+        printf '%s=READY\n' "$device"
+    else
+        printf '%s=MISSING\n' "$device"
+        exit 1
+    fi
+done
+
+echo "FPGATTEN_PLATFORM_CHECK=PASS"

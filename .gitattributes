@@ -1,2 +1,15 @@
-# Auto detect text files and perform LF normalization
 * text=auto
+*.sh text eol=lf
+*.tcl text eol=lf
+*.sv text eol=lf
+*.v text eol=lf
+*.xdc text eol=lf
+*.mem text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.bit -text
+*.xsa -text
+*.bin -text
+*.pdf -text
+*.xlsx -text

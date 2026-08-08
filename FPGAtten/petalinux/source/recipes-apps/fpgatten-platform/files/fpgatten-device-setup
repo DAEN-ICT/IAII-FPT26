@@ -1,0 +1,28 @@
+#!/bin/sh
+set -eu
+
+install -d -m 0755 -o FPGAteen -g fpgatten /run/lock/fpgatten
+install -d -m 0755 -o FPGAteen -g fpgatten /home/FPGAteen/results
+
+attention=""
+memory=""
+for sysdev in /sys/class/uio/uio*; do
+    [ -d "$sysdev" ] || continue
+    name=$(basename "$sysdev")
+    address=$(tr 'A-F' 'a-f' < "$sysdev/maps/map0/addr")
+    case "$address" in
+        *a0010000) attention="/dev/$name" ;;
+        *b0000000) memory="/dev/$name" ;;
+    esac
+done
+
+if [ -z "$attention" ] || [ -z "$memory" ]; then
+    echo "FPGATTEN_DEVICE_SETUP=FAIL" >&2
+    exit 1
+fi
+
+chown root:fpgatten "$attention" "$memory"
+chmod 0660 "$attention" "$memory"
+ln -sfn "$attention" /dev/fpgatten-attention
+ln -sfn "$memory" /dev/fpgatten-memory
+echo "FPGATTEN_DEVICE_SETUP=PASS attention=$attention memory=$memory"

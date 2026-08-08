@@ -1,0 +1,11 @@
+rtl/QKEngine/gqav5_qk_outer_product_16x16.sv
+rtl/QKEngine/gqav5_qk_partitioned_outer_product_16x16.sv
+rtl/QKEngine/gqav5_qk_row_to_column_feeder.sv
+rtl/QKEngine/gqav5_partitioned_qk_row_to_column_feeder.sv
+rtl/QKEngine/gqav5_partitioned_qk_column_stream_adapter.sv
+rtl/QKEngine/gqav5_qk_operand_pingpong.sv
+rtl/QKEngine/gqav5_partitioned_qk_operand_pingpong.sv
+rtl/QKEngine/gqav5_score_sidecar_16lane.sv
+rtl/QKEngine/gqav5_qk_score_stage.sv
+rtl/QKEngine/gqav5_buffered_qk_score_stage.sv
+rtl/QKEngine/gqav5_partitioned_buffered_qk_score_stage.sv

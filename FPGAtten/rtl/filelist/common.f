@@ -1,0 +1,10 @@
+rtl/Common/gqav5_pkg.sv
+rtl/Common/gqav5_async_fifo.sv
+rtl/Common/gqav5_rv_slice.sv
+rtl/Common/gqav5_local_control_buffer.sv
+rtl/Common/gqav5_local_counter64.sv
+rtl/Common/gqav5_local_accumulator64_9bit.sv
+rtl/Common/gqav5_bf16_mul_fp32.sv
+rtl/Common/gqav5_fp32_to_bf16_rne.sv
+rtl/Common/gqav5_fp32_add_rne.sv
+rtl/Common/gqav5_fp32_mul_rne.sv

@@ -1,0 +1,4 @@
+# One package per line.  These entries expose the FPGAtten packages in
+# petalinux-config -c rootfs and keep the build configuration reproducible.
+CONFIG_fpgatten-platform
+CONFIG_fpgatten-cases

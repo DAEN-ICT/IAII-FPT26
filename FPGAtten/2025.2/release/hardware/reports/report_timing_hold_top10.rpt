@@ -1,0 +1,451 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date              : Sat Aug  8 17:30:04 2026
+| Host              : DESKTOP-608D0QK running 64-bit major release  (build 9200)
+| Command           : report_timing -delay_type min -max_paths 10 -nworst 1 -path_type full -file R:/source/vivado/output/FPGAtten_2025_2_235MHz_core_300MHz_remote_validation/reports/report_timing_hold_top10.rpt
+| Design            : gqav7_z19p_system_wrapper
+| Device            : xczu19eg-ffvc1760
+| Speed File        : -2  PRODUCTION 1.30 05-15-2022
+| Design State      : Routed
+| Temperature Grade : I
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_cal_top/u_ddr_cal/u_ddr_cal_addr_decode/cal_DMOut_n_A_reg[6]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_cal_top/u_ddr_cal/u_ddr_cal_addr_decode/genblk10[0].cal_DMOut_n_A_r_reg[6]/D
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.128ns  (logic 0.059ns (46.094%)  route 0.069ns (53.906%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.056ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.138ns
+    Source Clock Delay      (SCD):    4.340ns
+    Clock Pessimism Removal (CPR):    -0.259ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.988     4.340    
+    SLICE_X54Y374        FDRE                         0.000     4.340 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_cal_top/u_ddr_cal/u_ddr_cal_addr_decode/cal_DMOut_n_A_reg[6]/C
+    SLICE_X54Y374        FDRE (Prop_EFF_SLICEL_C_Q)
+                                                      0.059     4.399 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_cal_top/u_ddr_cal/u_ddr_cal_addr_decode/cal_DMOut_n_A_reg[6]/Q
+                         net (fo=2, routed)           0.069     4.468    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_cal_top/u_ddr_cal/u_ddr_cal_addr_decode/cal_DMOut_n_A_reg_n_0_[6]
+    SLICE_X54Y373        FDRE                                         r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_cal_top/u_ddr_cal/u_ddr_cal_addr_decode/genblk10[0].cal_DMOut_n_A_r_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.259     4.138    
+                         clock pessimism              0.259     4.397    
+    SLICE_X54Y373        FDRE (Hold_GFF2_SLICEL_C_D)
+                                                      0.062     4.459    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_cal_top/u_ddr_cal/u_ddr_cal_addr_decode/genblk10[0].cal_DMOut_n_A_r_reg[6]
+  -------------------------------------------------------------------
+                         required time                         -4.459    
+                         arrival time                           4.468    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/i_exp2_bank/gen_lane[8].i_lane/is_nan_q_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_core_235_unbuf  {rise@0.000ns fall@2.128ns period=4.255ns})
+  Destination:            gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/alpha_q_reg[11][30]/D
+                            (rising edge-triggered cell FDRE clocked by clk_core_235_unbuf  {rise@0.000ns fall@2.128ns period=4.255ns})
+  Path Group:             clk_core_235_unbuf
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (clk_core_235_unbuf rise@0.000ns - clk_core_235_unbuf rise@0.000ns)
+  Data Path Delay:        0.230ns  (logic 0.094ns (40.805%)  route 0.136ns (59.195%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.160ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.015ns
+    Source Clock Delay      (SCD):    1.844ns
+    Clock Pessimism Removal (CPR):    0.011ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_core_235_unbuf rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency        -1.044    -1.044    
+                         propagated clock network latency
+                                                      2.888     1.844    
+    SLICE_X44Y177        FDRE                         0.000     1.844 r  gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/i_exp2_bank/gen_lane[8].i_lane/is_nan_q_reg/C
+    SLICE_X44Y177        FDRE (Prop_HFF2_SLICEL_C_Q)
+                                                      0.059     1.903 r  gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/i_exp2_bank/gen_lane[8].i_lane/is_nan_q_reg/Q
+                         net (fo=32, routed)          0.114     2.017    gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/i_exp2_bank/gen_lane[8].i_lane/is_nan_q
+    SLICE_X44Y180        LUT5 (Prop_G6LUT_SLICEL_I1_O)
+                                                      0.035     2.052 r  gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/i_exp2_bank/gen_lane[8].i_lane/alpha_q[11][30]_i_1/O
+                         net (fo=1, routed)           0.022     2.074    gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/i_exp2_bank_n_695
+    SLICE_X44Y180        FDRE                                         r  gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/alpha_q_reg[11][30]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_core_235_unbuf rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency        -1.206    -1.206    
+                         propagated clock network latency
+                                                      3.221     2.015    
+                         clock pessimism             -0.011     2.004    
+    SLICE_X44Y180        FDRE (Hold_GFF_SLICEL_C_D)
+                                                      0.060     2.064    gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_softmax/alpha_q_reg[11][30]
+  -------------------------------------------------------------------
+                         required time                         -2.064    
+                         arrival time                           2.074    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_pair_rescale/running_sum_q_reg[1][24]/C
+                            (rising edge-triggered cell FDRE clocked by clk_core_235_unbuf  {rise@0.000ns fall@2.128ns period=4.255ns})
+  Destination:            gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_pair_rescale/running_sum_q_reg[2][24]/D
+                            (rising edge-triggered cell FDRE clocked by clk_core_235_unbuf  {rise@0.000ns fall@2.128ns period=4.255ns})
+  Path Group:             clk_core_235_unbuf
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (clk_core_235_unbuf rise@0.000ns - clk_core_235_unbuf rise@0.000ns)
+  Data Path Delay:        0.305ns  (logic 0.060ns (19.672%)  route 0.245ns (80.328%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.233ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.956ns
+    Source Clock Delay      (SCD):    1.716ns
+    Clock Pessimism Removal (CPR):    0.007ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_core_235_unbuf rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency        -1.044    -1.044    
+                         propagated clock network latency
+                                                      2.760     1.716    
+    SLICE_X37Y234        FDRE                         0.000     1.716 r  gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_pair_rescale/running_sum_q_reg[1][24]/C
+    SLICE_X37Y234        FDRE (Prop_GFF2_SLICEL_C_Q)
+                                                      0.060     1.776 r  gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_pair_rescale/running_sum_q_reg[1][24]/Q
+                         net (fo=1, routed)           0.245     2.021    gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_pair_rescale/running_sum_q_reg[1]_1671[24]
+    SLICE_X37Y253        FDRE                                         r  gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_pair_rescale/running_sum_q_reg[2][24]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_core_235_unbuf rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency        -1.206    -1.206    
+                         propagated clock network latency
+                                                      3.162     1.956    
+                         clock pessimism             -0.007     1.949    
+    SLICE_X37Y253        FDRE (Hold_FFF2_SLICEL_C_D)
+                                                      0.062     2.011    gqav7_z19p_system_i/gqav7_accelerator_0/inst/u_accelerator/i_core/i_pipeline/i_downstream/i_pair_rescale/running_sum_q_reg[2][24]
+  -------------------------------------------------------------------
+                         required time                         -2.011    
+                         arrival time                           2.021    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMA/WADR0
+                            (rising edge-triggered cell RAMD32 clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.166ns  (logic 0.058ns (34.940%)  route 0.108ns (65.060%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.071ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.127ns
+    Source Clock Delay      (SCD):    4.309ns
+    Clock Pessimism Removal (CPR):    -0.253ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.957     4.309    
+    SLICE_X65Y307        FDRE                         0.000     4.309 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+    SLICE_X65Y307        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.058     4.367 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/Q
+                         net (fo=8, routed)           0.108     4.475    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/ADDRD0
+    SLICE_X65Y307        RAMD32                                       r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMA/WADR0
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.249     4.127    
+                         clock pessimism              0.253     4.380    
+    SLICE_X65Y307        RAMD32 (Hold_E5LUT_SLICEM_CLK_WADR0)
+                                                      0.085     4.465    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMA
+  -------------------------------------------------------------------
+                         required time                         -4.465    
+                         arrival time                           4.475    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMA_D1/WADR0
+                            (rising edge-triggered cell RAMD32 clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.166ns  (logic 0.058ns (34.940%)  route 0.108ns (65.060%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.071ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.127ns
+    Source Clock Delay      (SCD):    4.309ns
+    Clock Pessimism Removal (CPR):    -0.253ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.957     4.309    
+    SLICE_X65Y307        FDRE                         0.000     4.309 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+    SLICE_X65Y307        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.058     4.367 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/Q
+                         net (fo=8, routed)           0.108     4.475    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/ADDRD0
+    SLICE_X65Y307        RAMD32                                       r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMA_D1/WADR0
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.249     4.127    
+                         clock pessimism              0.253     4.380    
+    SLICE_X65Y307        RAMD32 (Hold_E6LUT_SLICEM_CLK_WADR0)
+                                                      0.085     4.465    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMA_D1
+  -------------------------------------------------------------------
+                         required time                         -4.465    
+                         arrival time                           4.475    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMB/WADR0
+                            (rising edge-triggered cell RAMD32 clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.166ns  (logic 0.058ns (34.940%)  route 0.108ns (65.060%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.071ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.127ns
+    Source Clock Delay      (SCD):    4.309ns
+    Clock Pessimism Removal (CPR):    -0.253ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.957     4.309    
+    SLICE_X65Y307        FDRE                         0.000     4.309 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+    SLICE_X65Y307        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.058     4.367 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/Q
+                         net (fo=8, routed)           0.108     4.475    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/ADDRD0
+    SLICE_X65Y307        RAMD32                                       r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMB/WADR0
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.249     4.127    
+                         clock pessimism              0.253     4.380    
+    SLICE_X65Y307        RAMD32 (Hold_F5LUT_SLICEM_CLK_WADR0)
+                                                      0.085     4.465    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMB
+  -------------------------------------------------------------------
+                         required time                         -4.465    
+                         arrival time                           4.475    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMB_D1/WADR0
+                            (rising edge-triggered cell RAMD32 clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.166ns  (logic 0.058ns (34.940%)  route 0.108ns (65.060%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.071ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.127ns
+    Source Clock Delay      (SCD):    4.309ns
+    Clock Pessimism Removal (CPR):    -0.253ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.957     4.309    
+    SLICE_X65Y307        FDRE                         0.000     4.309 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+    SLICE_X65Y307        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.058     4.367 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/Q
+                         net (fo=8, routed)           0.108     4.475    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/ADDRD0
+    SLICE_X65Y307        RAMD32                                       r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMB_D1/WADR0
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.249     4.127    
+                         clock pessimism              0.253     4.380    
+    SLICE_X65Y307        RAMD32 (Hold_F6LUT_SLICEM_CLK_WADR0)
+                                                      0.085     4.465    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMB_D1
+  -------------------------------------------------------------------
+                         required time                         -4.465    
+                         arrival time                           4.475    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMC/WADR0
+                            (rising edge-triggered cell RAMD32 clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.166ns  (logic 0.058ns (34.940%)  route 0.108ns (65.060%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.071ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.127ns
+    Source Clock Delay      (SCD):    4.309ns
+    Clock Pessimism Removal (CPR):    -0.253ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.957     4.309    
+    SLICE_X65Y307        FDRE                         0.000     4.309 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+    SLICE_X65Y307        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.058     4.367 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/Q
+                         net (fo=8, routed)           0.108     4.475    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/ADDRD0
+    SLICE_X65Y307        RAMD32                                       r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMC/WADR0
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.249     4.127    
+                         clock pessimism              0.253     4.380    
+    SLICE_X65Y307        RAMD32 (Hold_G5LUT_SLICEM_CLK_WADR0)
+                                                      0.085     4.465    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMC
+  -------------------------------------------------------------------
+                         required time                         -4.465    
+                         arrival time                           4.475    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMC_D1/WADR0
+                            (rising edge-triggered cell RAMD32 clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.166ns  (logic 0.058ns (34.940%)  route 0.108ns (65.060%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.071ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.127ns
+    Source Clock Delay      (SCD):    4.309ns
+    Clock Pessimism Removal (CPR):    -0.253ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.957     4.309    
+    SLICE_X65Y307        FDRE                         0.000     4.309 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+    SLICE_X65Y307        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.058     4.367 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/Q
+                         net (fo=8, routed)           0.108     4.475    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/ADDRD0
+    SLICE_X65Y307        RAMD32                                       r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMC_D1/WADR0
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.249     4.127    
+                         clock pessimism              0.253     4.380    
+    SLICE_X65Y307        RAMD32 (Hold_G6LUT_SLICEM_CLK_WADR0)
+                                                      0.085     4.465    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMC_D1
+  -------------------------------------------------------------------
+                         required time                         -4.465    
+                         arrival time                           4.475    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+Slack (MET) :             0.010ns  (arrival time - required time)
+  Source:                 gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+                            (rising edge-triggered cell FDRE clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Destination:            gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMD/ADR0
+                            (rising edge-triggered cell RAMS32 clocked by mmcm_clkout0  {rise@0.000ns fall@1.667ns period=3.333ns})
+  Path Group:             mmcm_clkout0
+  Path Type:              Hold (Min at Slow Process Corner)
+  Requirement:            0.000ns  (mmcm_clkout0 rise@0.000ns - mmcm_clkout0 rise@0.000ns)
+  Data Path Delay:        0.166ns  (logic 0.058ns (34.940%)  route 0.108ns (65.060%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.071ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    4.127ns
+    Source Clock Delay      (SCD):    4.309ns
+    Clock Pessimism Removal (CPR):    -0.253ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         2.352     2.352    
+                         propagated clock network latency
+                                                      1.957     4.309    
+    SLICE_X65Y307        FDRE                         0.000     4.309 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/C
+    SLICE_X65Y307        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.058     4.367 r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].status_ram_wr_addr_cpy_r_reg[2][0]/Q
+                         net (fo=8, routed)           0.108     4.475    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/ADDRD0
+    SLICE_X65Y307        RAMS32                                       r  gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMD/ADR0
+  -------------------------------------------------------------------    -------------------
+
+                         (clock mmcm_clkout0 rise edge)
+                                                      0.000     0.000 r  
+                         clock source latency         1.878     1.878    
+                         propagated clock network latency
+                                                      2.249     4.127    
+                         clock pessimism              0.253     4.380    
+    SLICE_X65Y307        RAMS32 (Hold_H5LUT_SLICEM_CLK_ADR0)
+                                                      0.085     4.465    gqav7_z19p_system_i/pl_ddr4_0/inst/u_ddr4_controller/inst/u_ddr4_mem_intfc/u_ddr_ui/u_ddr_ui_rd_data/not_strict_mode.status_ram_0.copies_of_sts_ram[2].RAM32M1/RAMD
+  -------------------------------------------------------------------
+                         required time                         -4.465    
+                         arrival time                           4.475    
+  -------------------------------------------------------------------
+                         slack                                  0.010    
+
+
+
+

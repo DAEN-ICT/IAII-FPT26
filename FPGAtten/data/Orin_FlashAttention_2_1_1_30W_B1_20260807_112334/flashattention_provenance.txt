@@ -1,0 +1,38 @@
+run_id=orin_flashattention_30w_b1_20260807_112334
+timestamp=2026-08-07T11:52:00+08:00
+python=Python 3.8.20
+python_executable=/home/user/anaconda3/envs/py38/bin/python
+--- pip show ---
+Name: torch
+Version: 2.1.0a0+41361538.nv23.6
+Summary: Tensors and Dynamic neural networks in Python with strong GPU acceleration
+Home-page: https://pytorch.org/
+Author: PyTorch Team
+Author-email: packages@pytorch.org
+License: BSD-3
+Location: /home/user/anaconda3/envs/py38/lib/python3.8/site-packages
+Requires: filelock, fsspec, jinja2, networkx, sympy, typing-extensions
+Required-by: flash_attn, torchaudio, torchvision, ultralytics, ultralytics-thop
+---
+Name: flash_attn
+Version: 2.1.1
+Summary: Flash Attention: Fast and Memory-Efficient Exact Attention
+Home-page: https://github.com/Dao-AILab/flash-attention
+Author: Tri Dao
+Author-email: trid@cs.stanford.edu
+License: 
+Location: /home/user/anaconda3/envs/py38/lib/python3.8/site-packages/flash_attn-2.1.1-py3.8-linux-aarch64.egg
+Requires: einops, ninja, packaging, torch
+Required-by: 
+--- flash source git ---
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+--- extension ---
+-rwxrwxr-x 1 user user 189191032 8月   1 10:14 /home/user/tools/flash-attention-2.1.1/flash_attn_2_cuda.cpython-38-aarch64-linux-gnu.so
+57705f33ddd1e9dcf0f22a312c73933247df1f8b7bb6e71954225aa5a10bcf30  /home/user/tools/flash-attention-2.1.1/flash_attn_2_cuda.cpython-38-aarch64-linux-gnu.so
+--- build toolchain ---
+bash: line 22: nvcc: command not found
+gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+--- relevant environment ---
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin

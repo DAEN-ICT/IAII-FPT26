@@ -1,0 +1,6 @@
+rtl/Top/gqav5_attention_downstream.sv
+rtl/Top/gqav5_attention_overlap_pipeline.sv
+rtl/Top/gqav5_buffered_attention_pipeline.sv
+rtl/Top/gqav5_partitioned_buffered_attention_pipeline.sv
+rtl/Top/gqav5_attention_axi_core.sv
+rtl/Top/gqav5_axi_accelerator_top.sv

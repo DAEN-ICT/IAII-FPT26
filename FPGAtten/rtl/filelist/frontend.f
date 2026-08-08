@@ -1,0 +1,7 @@
+rtl/Frontend/gqav5_dma_address_generator.sv
+rtl/Frontend/gqav5_attention_group_scheduler.sv
+rtl/Frontend/gqav5_resident_group_scheduler.sv
+rtl/Frontend/gqav5_resident_operand_frontend.sv
+rtl/Frontend/gqav5_dma_request_arbiter.sv
+rtl/Frontend/gqav5_store_request_generator.sv
+rtl/Frontend/gqav5_job_scheduler.sv
