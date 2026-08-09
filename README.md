@@ -4,6 +4,8 @@
 
 项目内容位于 [`FPGAtten/`](FPGAtten/README.md)。比赛正式工具版本为 Vivado 2025.2；Vivado 2024.2 内容作为兼容基线保留。
 
+最终双版本比赛提交包及SHA-256校验文件位于 [`submission/`](submission/README.md)。
+
 ## 仓库范围
 
 本仓库保留：
@@ -15,4 +17,3 @@
 - 跨平台实验数据和复现说明。
 
 由于 GitHub 单文件与仓库存储限制，未提交可重新生成的大型文件，包括 WIC、rootfs、JTAG 系统镜像、PetaLinux 历史归档、Vivado runs/cache 以及 577 MB 的完整实现工程归档。排除规则见 [`.gitignore`](.gitignore)。
-
